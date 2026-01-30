@@ -3,13 +3,14 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { Providers } from "@/components/providers";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Priya & Isaac - Wedding Celebration',
-  description: 'Join us as we celebrate the love and union of Priya and Isaac. An elegant wedding invitation experience.',
+  title: 'Axel-Philippe & Eunice - Wedding Celebration',
+  description: 'Join us as we celebrate the love and union of Axel-Philippe and Eunice. An elegant wedding invitation experience.',
   generator: 'v0.app',
   viewport: {
     width: 'device-width',
@@ -44,7 +45,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         <Analytics />
       </body>
     </html>

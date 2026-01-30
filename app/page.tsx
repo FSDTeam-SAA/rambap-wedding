@@ -6,11 +6,17 @@ import HeroSection from '@/components/hero-section';
 import CountdownSection from '@/components/countdown-section';
 import VenueSection from '@/components/venue-section';
 import DayProgramSection from '@/components/day-program-section';
+import MenuSection from '@/components/menu-section';
+import GallerySection from '@/components/gallery-section';
+import AccommodationSection from '@/components/accommodation-section';
+import CarRentalSection from '@/components/car-rental-section';
 import DressCodeSection from '@/components/dress-code-section';
 import FAQSection from '@/components/faq-section';
 import RSVPForm from '@/components/rsvp-form';
 import AudioPlayer from '@/components/audio-player';
 import Footer from '@/components/footer';
+
+import LanguageSwitcher from '@/components/language-switcher';
 
 export default function Home() {
   const [showLanding, setShowLanding] = useState(false);
@@ -36,6 +42,9 @@ export default function Home() {
       {/* Audio always mounted */}
       <AudioPlayer ref={audioRef} />
 
+      {/* Language Switcher */}
+      <LanguageSwitcher />
+
       {!showLanding ? (
         <VideoIntro
           onStart={handleIntroStart}
@@ -47,6 +56,10 @@ export default function Home() {
           <CountdownSection />
           <VenueSection />
           <DayProgramSection />
+          <MenuSection />
+          <GallerySection />
+          <AccommodationSection />
+          <CarRentalSection />
           <DressCodeSection />
           <FAQSection />
           <div ref={rsvpRef}>

@@ -1,8 +1,11 @@
 import React from "react";
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
-    <footer className="bg-[#3f4a32] text-[#f5f5f0] py-16">
+    <footer className="bg-[#3f4b32] text-[#f5f5f0] py-16">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center text-center gap-4">
 
@@ -11,12 +14,12 @@ const Footer = () => {
 
           {/* Names */}
           <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-wide">
-            Pedro & Júlia
+            Axel-Philippe & Eunice
           </h3>
 
           {/* Date */}
           <p className="text-xs uppercase tracking-[0.3em] opacity-80">
-            May 9, 2026
+            {t.hero.date}
           </p>
 
           {/* Divider */}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 interface TimeLeft {
   days: number;
@@ -10,6 +11,7 @@ interface TimeLeft {
 }
 
 export default function CountdownSection() {
+  const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -19,7 +21,7 @@ export default function CountdownSection() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const weddingDate = new Date('2026-05-09').getTime();
+      const weddingDate = new Date('2026-04-04T10:00:00').getTime();
       const now = new Date().getTime();
       const difference = weddingDate - now;
 
@@ -66,25 +68,22 @@ export default function CountdownSection() {
       </div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-sage-dark/70"></div>
+      <div className="absolute inset-0 bg-[#3c4a2e]/70"></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Title */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light text-white mb-3">
-            Countdown
+            {t.countdown.title}
           </h2>
-          <p className="text-white/80 font-light text-base md:text-lg">
-            To the most special day of our lives
-          </p>
         </div>
 
         {/* Countdown Boxes */}
         <div className="flex justify-center items-center gap-4 md:gap-6 flex-wrap">
-          <CountdownBox value={timeLeft.days} label="Days" />
-          <CountdownBox value={timeLeft.hours} label="Hours" />
-          <CountdownBox value={timeLeft.minutes} label="Minutes" />
-          <CountdownBox value={timeLeft.seconds} label="Seconds" />
+          <CountdownBox value={timeLeft.days} label={t.countdown.days} />
+          <CountdownBox value={timeLeft.hours} label={t.countdown.hours} />
+          <CountdownBox value={timeLeft.minutes} label={t.countdown.minutes} />
+          <CountdownBox value={timeLeft.seconds} label={t.countdown.seconds} />
         </div>
       </div>
     </section>

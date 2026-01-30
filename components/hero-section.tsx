@@ -1,12 +1,15 @@
 'use client';
 
 import { ChevronDown } from 'lucide-react';
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 interface HeroSectionProps {
   onScroll?: () => void;
 }
 
 export default function HeroSection({ onScroll }: HeroSectionProps) {
+  const { t } = useLanguage();
+
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
@@ -25,18 +28,18 @@ export default function HeroSection({ onScroll }: HeroSectionProps) {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 py-8">
         <p className="text-sm md:text-base font-light tracking-[0.3em] mb-4 uppercase">
-          Nos Casamos
+          {t.hero.nos_casamos}
         </p>
 
         <div className="mb-6 space-y-4">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-light">
-            Pedro
+            Axel-Philippe
           </h1>
           <p className="text-2xl md:text-3xl text-amber-300 font-serif font-light">
             &
           </p>
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-light">
-            Júlia
+            Eunice
           </h1>
         </div>
 
@@ -48,8 +51,13 @@ export default function HeroSection({ onScroll }: HeroSectionProps) {
         </div>
 
         {/* Date */}
-        <p className="text-lg md:text-xl font-light tracking-wider mb-12">
-          May 9, 2026
+        <p className="text-lg md:text-xl font-light tracking-wider mb-2">
+          {t.hero.date}
+        </p>
+
+        {/* Location */}
+        <p className="text-sm md:text-base font-light tracking-widest uppercase mb-12 text-amber-200/80">
+          {t.hero.location}
         </p>
 
         {/* CTA */}

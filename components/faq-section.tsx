@@ -2,32 +2,10 @@
 
 import { useState } from 'react';
 import { ChevronDown, HelpCircle, Gift, Heart } from 'lucide-react';
-
-interface FAQItem {
-  question: string;
-  answer: string;
-  icon: string;
-}
-
-const faqs: FAQItem[] = [
-  {
-    icon: '🚌',
-    question: 'Will there be bus service?',
-    answer: 'Yes, we will provide complimentary bus service for our guests. The bus will depart from designated locations and return after the celebration ends.',
-  },
-  {
-    icon: '🚗',
-    question: 'Can I drive my own car?',
-    answer: 'Absolutely! There is ample parking available at the venue. Please bring your driving directions or use GPS to navigate.',
-  },
-  {
-    icon: '👶',
-    question: 'Can children attend?',
-    answer: 'Children are welcome at our celebration. We will have activities and accommodations for families. Please mention their names and ages in the RSVP form.',
-  },
-];
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 export default function FAQSection() {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -39,12 +17,12 @@ export default function FAQSection() {
             <HelpCircle className="w-8 h-8" style={{ color: '#6B6B6B' }} />
           </div>
           <h2 className="text-3xl md:text-4xl font-serif text-gray-700 mb-8">
-            Important Information
+            {t.faq.title}
           </h2>
 
           {/* FAQ Accordion Items */}
           <div className="space-y-3">
-            {faqs.map((faq, index) => (
+            {t.faq.items.map((faq: any, index: number) => (
               <div
                 key={index}
                 className="bg-white rounded-md shadow-sm overflow-hidden"
@@ -54,25 +32,22 @@ export default function FAQSection() {
                   className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-lg">{faq.icon}</span>
                     <span className="text-gray-700 font-normal text-sm md:text-base">
                       {faq.question}
                     </span>
                   </div>
                   <ChevronDown
-                    className={`w-4 h-4 text-gray-500 transition-transform duration-200 flex-shrink-0 ${
-                      openIndex === index ? 'transform rotate-180' : ''
-                    }`}
+                    className={`w-4 h-4 text-gray-500 transition-transform duration-200 flex-shrink-0 ${openIndex === index ? 'transform rotate-180' : ''
+                      }`}
                   />
                 </button>
 
                 <div
-                  className={`overflow-hidden transition-all duration-200 ${
-                    openIndex === index ? 'max-h-48' : 'max-h-0'
-                  }`}
+                  className={`overflow-hidden transition-all duration-200 ${openIndex === index ? 'max-h-48' : 'max-h-0'
+                    }`}
                 >
                   <div className="px-5 pb-4 pt-2 border-t border-gray-100">
-                    <p className="text-gray-600 text-sm leading-relaxed pl-9">
+                    <p className="text-gray-600 text-sm leading-relaxed pl-4">
                       {faq.answer}
                     </p>
                   </div>
@@ -88,7 +63,7 @@ export default function FAQSection() {
             <Gift className="w-8 h-8" style={{ color: '#6B6B6B' }} />
           </div>
           <h3 className="text-3xl md:text-4xl font-serif text-gray-700 mb-8">
-            Gifts
+            {t.gifts.title}
           </h3>
 
           <div className="bg-white/40 rounded-lg px-8 py-10 max-w-xl mx-auto">
@@ -96,10 +71,10 @@ export default function FAQSection() {
               <Heart className="w-6 h-6" style={{ color: '#A0A0A0' }} />
             </div>
             <p className="text-gray-600 text-base leading-relaxed mb-4">
-              Your presence is the greatest gift we can receive.
+              {t.gifts.description1}
             </p>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Having you by our side on this special day is all we need. However, if you wish to give us a gift, any form of present will be received with much love and gratitude.
+              {t.gifts.description2}
             </p>
           </div>
         </div>

@@ -1,0 +1,234 @@
+{
+  "en": {
+    "hero": {
+      "nos_casamos": "We Are Getting Married",
+      "names": "Axel-Philippe & Eunice",
+      "date": "April 4, 2026",
+      "location": "Tema, Ghana",
+      "confirm_attendance": "Confirm Your Attendance"
+    },
+    "envelope": {
+      "names": "Axel-Philippe & Eunice",
+      "click_anywhere": "Click Anywhere to Open"
+    },
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "title": "Countdown to the big day"
+    },
+    "venue": {
+      "title": "Where We Celebrate",
+      "subtitle": "The place where we'll say \"I do\"",
+      "name": "Tema, Ghana",
+      "ceremony": "Ceremony",
+      "banquet": "Banquet",
+      "open_maps": "Open in Maps",
+      "transportation_title": "Transportation",
+      "transportation_text": "Parking is available at the venue for those who prefer to drive."
+    },
+    "program": {
+      "title": "Day Program",
+      "subtitle": "What we have planned for you",
+      "events": [
+        {
+          "time": "10:00 AM",
+          "title": "Traditional Wedding",
+          "description": "Celebrating our heritage and traditions",
+          "icon": "💍"
+        },
+        {
+          "time": "03:00 PM",
+          "title": "White Wedding",
+          "description": "Our church ceremony",
+          "icon": "⛪"
+        },
+        {
+          "time": "04:30 PM",
+          "title": "Reception",
+          "description": "Time to celebrate together!",
+          "icon": "🥂"
+        }
+      ]
+    },
+    "dress_code": {
+      "title": "Dress Code",
+      "items": [
+        {
+          "title": "Formal and Traditional Wear",
+          "description": "Dress your best for the occasion"
+        }
+      ],
+      "note": "Please avoid wearing white — reserved for the bride"
+    },
+    "faq": {
+      "title": "Important Information",
+      "items": [
+        {
+          "question": "Can I drive my own car?",
+          "answer": "Absolutely! There is ample parking available at the venue. Please bring your driving directions or use GPS to navigate."
+        },
+        {
+          "question": "Will I need a visa to go to Ghana?",
+          "answer": "Information will be provided ASAP."
+        },
+        {
+          "question": "Can children attend?",
+          "answer": "Children are welcome at our celebration. We will have activities and accommodations for families. Please mention their names and ages in the RSVP form."
+        }
+      ]
+    },
+    "gifts": {
+      "title": "Gifts",
+      "description1": "Your presence is the greatest gift we can receive.",
+      "description2": "Having you by our side on this special day is all we need. However, if you wish to give us a gift, any form of present will be received with much love and gratitude."
+    },
+    "rsvp": {
+      "title": "Confirm Your Attendance",
+      "subtitle": "Please let us know if you can join us",
+      "fields": {
+        "name": "Guest Name",
+        "attendance": "Attendance",
+        "attendance_yes": "Yes, I'll be there!",
+        "attendance_no": "Sorry, I can't come",
+        "guests": "Number of Guests",
+        "meal": "Meal Preference (optional)",
+        "message": "Message to Couple (optional)"
+      },
+      "submit": "Send RSVP",
+      "confirmation": "Thank you! Your response has been recorded."
+    },
+    "accommodation": {
+      "title": "Accommodation",
+      "description": "Here are some options for your stay in Tema",
+      "airbnb": "Find on Airbnb",
+      "hotels": "View Hotels"
+    },
+    "car_rental": {
+      "title": "Car Rental",
+      "description": "Need a car for your visit?",
+      "view_options": "View Rental Options"
+    },
+    "footer": {
+      "contact_email": "Contact Email",
+      "contact_phone": "Contact Phone"
+    }
+  },
+  "fr": {
+    "hero": {
+      "nos_casamos": "Nous Nous Marions",
+      "names": "Axel-Philippe & Eunice",
+      "date": "4 Avril 2026",
+      "location": "Tema, Ghana",
+      "confirm_attendance": "Confirmez Votre Présence"
+    },
+    "envelope": {
+      "names": "Axel-Philippe & Eunice",
+      "click_anywhere": "Cliquez n'importe où pour ouvrir"
+    },
+    "countdown": {
+      "days": "Jours",
+      "hours": "Heures",
+      "minutes": "Minutes",
+      "seconds": "Secondes",
+      "title": "Compte à rebours avant le grand jour"
+    },
+    "venue": {
+      "title": "Où Nous Célébrons",
+      "subtitle": "L'endroit où nous dirons \"Oui\"",
+      "name": "Tema, Ghana",
+      "ceremony": "Cérémonie",
+      "banquet": "Banquet",
+      "open_maps": "Ouvrir dans Maps",
+      "transportation_title": "Transport",
+      "transportation_text": "Un parking est disponible sur place pour ceux qui préfèrent conduire."
+    },
+    "program": {
+      "title": "Programme de la Journée",
+      "subtitle": "Ce que nous avons prévu pour vous",
+      "events": [
+        {
+          "time": "10h00",
+          "title": "Mariage Traditionnel",
+          "description": "Célébration de notre héritage et de nos traditions",
+          "icon": "💍"
+        },
+        {
+          "time": "15h00",
+          "title": "Mariage Blanc",
+          "description": "Notre cérémonie à l'église",
+          "icon": "⛪"
+        },
+        {
+          "time": "16h30",
+          "title": "Réception",
+          "description": "C'est l'heure de célébrer ensemble !",
+          "icon": "🥂"
+        }
+      ]
+    },
+    "dress_code": {
+      "title": "Code Vestimentaire",
+      "items": [
+        {
+          "title": "Tenue Formelle et Traditionnelle",
+          "description": "Habillez-vous de votre mieux pour l'occasion"
+        }
+      ],
+      "note": "Veuillez éviter de porter du blanc — réservé à la mariée"
+    },
+    "faq": {
+      "title": "Informations Importantes",
+      "items": [
+        {
+          "question": "Puis-je conduire ma propre voiture ?",
+          "answer": "Absolument ! Un grand parking est disponible sur place. Veuillez apporter vos indications routières ou utiliser le GPS pour naviguer."
+        },
+        {
+          "question": "Aurai-je besoin d'un visa pour aller au Ghana ?",
+          "answer": "L'information sera fournie dès que possible."
+        },
+        {
+          "question": "Les enfants peuvent-ils assister ?",
+          "answer": "Les enfants sont les bienvenus à notre célébration. Nous aurons des activités et des aménagements pour les familles. Veuillez mentionner leurs noms et âges dans le formulaire RSVP."
+        }
+      ]
+    },
+    "gifts": {
+      "title": "Cadeaux",
+      "description1": "Votre présence est le plus beau cadeau que nous puissions recevoir.",
+      "description2": "Vous avoir à nos côtés en ce jour spécial est tout ce dont nous avons besoin. Cependant, si vous souhaitez nous offrir un cadeau, toute forme de présent sera reçue avec beaucoup d'amour et de gratitude."
+    },
+    "rsvp": {
+      "title": "Confirmez Votre Présence",
+      "subtitle": "Veuillez nous faire savoir si vous pouvez vous joindre à nous",
+      "fields": {
+        "name": "Nom de l'invité",
+        "attendance": "Présence",
+        "attendance_yes": "Oui, je serai là !",
+        "attendance_no": "Désolé, je ne peux pas venir",
+        "guests": "Nombre d'invités",
+        "meal": "Préférence alimentaire (facultatif)",
+        "message": "Message au couple (facultatif)"
+      },
+      "submit": "Envoyer RSVP",
+      "confirmation": "Merci ! Votre réponse a été enregistrée."
+    },
+    "accommodation": {
+      "title": "Hébergement",
+      "description": "Voici quelques options pour votre séjour à Tema",
+      "airbnb": "Trouver sur Airbnb",
+      "hotels": "Voir les Hôtels"
+    },
+    "car_rental": {
+      "title": "Location de Voiture",
+      "description": "Besoin d'une voiture pour votre visite ?",
+      "view_options": "Voir les Options de Location"
+    },
+    "footer": {
+      "contact_email": "Email de Contact",
+      "contact_phone": "Téléphone de Contact"
+    }
+  }
+}
