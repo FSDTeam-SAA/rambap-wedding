@@ -6,7 +6,7 @@ export default function DressCodeSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="w-full py-16 md:py-24 px-4 bg-[#E6E2D3]">
+    <section className="w-full pb-16 px-4 bg-[#E6E2D3]">
       <div className="max-w-5xl mx-auto">
         {/* Title */}
         <div className="text-center mb-12 md:mb-16">
