@@ -42,7 +42,7 @@ export default function CountdownSection() {
 
   const CountdownBox = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center">
-      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-8 md:px-12 py-6 md:py-8 min-w-[120px] md:min-w-[140px]">
+      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-8 md:px-12 py-6 md:py-8">
         <p className="text-4xl md:text-5xl font-light text-white text-center">
           {String(value).padStart(2, '0')}
         </p>
@@ -68,7 +68,7 @@ export default function CountdownSection() {
       </div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-[#3c4a2e]/70"></div>
+      <div className="absolute inset-0 bg-primary/70"></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Title */}
