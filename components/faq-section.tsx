@@ -22,38 +22,79 @@ export default function FAQSection() {
 
           {/* FAQ Accordion Items */}
           <div className="space-y-3">
-            {t.faq.items.map((faq: any, index: number) => (
-              <div
-                key={index}
-                className="bg-white rounded-md shadow-sm overflow-hidden"
-              >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-gray-700 font-normal text-sm md:text-base">
-                      {faq.question}
-                    </span>
-                  </div>
-                  <ChevronDown
-                    className={`w-4 h-4 text-gray-500 transition-transform duration-200 flex-shrink-0 ${openIndex === index ? 'transform rotate-180' : ''
-                      }`}
-                  />
-                </button>
+            {t.faq.items.map((faq: any, index: number) => {
+              const isVisaQuestion = faq.question.toLowerCase().includes("visa");
 
+              return (
                 <div
-                  className={`overflow-hidden transition-all duration-200 ${openIndex === index ? 'max-h-48' : 'max-h-0'
-                    }`}
+                  key={index}
+                  className="bg-white rounded-md shadow-sm overflow-hidden"
                 >
-                  <div className="px-5 pb-4 pt-2 border-t border-gray-100">
-                    <p className="text-gray-600 text-sm leading-relaxed pl-4">
-                      {faq.answer}
-                    </p>
+                  <button
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-gray-700 font-normal text-sm md:text-base">
+                        {faq.question}
+                      </span>
+                    </div>
+                    <ChevronDown
+                      className={`w-4 h-4 text-gray-500 transition-transform duration-200 flex-shrink-0 ${
+                        openIndex === index ? 'transform rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      openIndex === index ? 'max-h-[1200px]' : 'max-h-0'
+                    }`}
+                  >
+                    <div className="px-5 pb-6 pt-4 border-t border-gray-100 text-left">
+                      <p className="text-gray-600 text-sm leading-relaxed pl-4 mb-4">
+                        {faq.answer}
+                      </p>
+
+                      {isVisaQuestion && (
+                        <div className="pl-4 space-y-4">
+                          <div className="text-sm space-y-2">
+                            <p className="text-gray-700">
+                              <strong>Visa application from Paris:</strong>{' '}
+                              <a 
+                                href="https://paris.mfa.gov.gh/VisaApplicationInfo.aspx" 
+                                target="_blank" 
+                                className="text-blue-500 underline break-all"
+                              >
+                                https://paris.mfa.gov.gh/VisaApplicationInfo.aspx
+                              </a>
+                            </p>
+                            <p className="text-gray-700">
+                              <strong>Visa application from Brussels:</strong>{' '}
+                              <a 
+                                href="https://brussels.mfa.gov.gh/" 
+                                target="_blank" 
+                                className="text-blue-500 underline break-all"
+                              >
+                                https://brussels.mfa.gov.gh/
+                              </a>
+                            </p>
+                          </div>
+
+                          <div className="mt-4 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                            <img 
+                              src="/faq.png" 
+                              alt="Visa Exemption Table" 
+                              className="w-full h-auto object-contain"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
