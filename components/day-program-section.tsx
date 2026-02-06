@@ -10,8 +10,15 @@ export default function DayProgramSection() {
     window.print();
   };
 
+  // Define map links for each event
+  const eventMapLinks = [
+    'https://www.google.com/maps/place/5%C2%B038\'50.5%22N+0%C2%B001\'25.7%22W/@5.647346,-0.023804,17z/data=!3m1!4b1!4m4!3m3!8m2!3d5.647346!4d-0.023804?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D', // Traditional wedding
+    'https://www.google.com/maps/place/ICGC+ZOE+TEMPLE/@5.6458368,-0.0152148,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf80bf08866a81:0x65ad836254945b55!8m2!3d5.6458315!4d-0.0103439!16s%2Fg%2F11c5s5fzn4?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D', // White wedding
+    'https://www.google.com/maps/place/5%C2%B038\'50.5%22N+0%C2%B001\'25.7%22W/@5.647346,-0.023804,17z/data=!3m1!4b1!4m4!3m3!8m2!3d5.647346!4d-0.023804?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D'  // Reception
+  ];
+
   return (
-    <section className="w-full py-16 md:py-24 px-4 bg-[#f3efe6] print:bg-white print:py-8">
+    <section className="w-full pb-16 px-4 bg-[#f3efe6] print:bg-white print:py-8">
       <div className="max-w-5xl mx-auto">
         {/* Title & Print Action */}
         <div className="flex justify-between items-start mb-16 md:mb-20">
@@ -58,7 +65,7 @@ export default function DayProgramSection() {
                       {event.description}
                     </p>
                     <a
-                      href="https://maps.google.com/?q=Tema,+Ghana"
+                      href={eventMapLinks[index]}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-[10px] uppercase tracking-tighter text-primary/60 hover:text-primary transition-colors mt-2"
