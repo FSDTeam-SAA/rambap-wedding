@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { MapPin, Clock } from 'lucide-react';
-import { useLanguage } from '@/lib/context/LanguageContext';
+import { MapPin, Clock } from "lucide-react";
+import { useLanguage } from "@/lib/context/LanguageContext";
 
 export default function VenueSection() {
   const { t } = useLanguage();
@@ -14,9 +14,7 @@ export default function VenueSection() {
           <h2 className="text-4xl md:text-5xl font-serif font-light text-foreground mb-2">
             {t.venue.title}
           </h2>
-          <p className="text-foreground/60 font-light">
-            {t.venue.subtitle}
-          </p>
+          <p className="text-foreground/60 font-light">{t.venue.subtitle}</p>
         </div>
 
         {/* Venue Card */}
@@ -34,18 +32,33 @@ export default function VenueSection() {
             </h3>
 
             {/* Event Details */}
-            <div className="grid grid-cols-2 gap-6 md:gap-12 mb-8 pb-8 border-b border-border">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 pb-8 border-b border-border">
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 text-primary mb-2">
                   <Clock className="w-4 h-4" />
-                  <span className="text-sm font-light text-foreground/70">{t.venue.ceremony}</span>
+                  <span className="text-sm font-light text-foreground/70">
+                    {t.venue.traditional || "Traditional Ceremony"}
+                  </span>
                 </div>
                 <p className="text-lg font-light text-foreground">10:00 AM</p>
               </div>
+
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 text-primary mb-2">
                   <Clock className="w-4 h-4" />
-                  <span className="text-sm font-light text-foreground/70">{t.venue.banquet}</span>
+                  <span className="text-sm font-light text-foreground/70">
+                    {t.venue.wedding || "White Wedding"}
+                  </span>
+                </div>
+                <p className="text-lg font-light text-foreground">03:00 PM</p>
+              </div>
+
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 text-primary mb-2">
+                  <Clock className="w-4 h-4" />
+                  <span className="text-sm font-light text-foreground/70">
+                    {t.venue.reception || "Reception"}
+                  </span>
                 </div>
                 <p className="text-lg font-light text-foreground">04:30 PM</p>
               </div>
@@ -67,7 +80,7 @@ export default function VenueSection() {
                 width="100%"
                 height="100%"
                 frameBorder="0"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127052.880482!2d-0.033333!3d5.666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf8374d8d1e37f%3A0xe5a3f1ed143d3b74!2sTema%2C%20Ghana!5e0!3m2!1sen!2s!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.949518366359!2d-0.02478242518396151!3d5.566266633805923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b34577%3A0x60a6c5d80510c2c6!2sTema%2C%20Ghana!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -77,7 +90,7 @@ export default function VenueSection() {
             {/* Open Map Button */}
             <div className="text-center">
               <a
-                href="https://maps.google.com/?q=Tema,+Ghana"
+                href="https://maps.app.goo.gl/8dDLvsm3TBBN5qzK8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors duration-300 font-light"
@@ -92,11 +105,17 @@ export default function VenueSection() {
         {/* Transportation */}
         <div className="mt-12 md:mt-16 p-6 md:p-8 bg-secondary/30 rounded-lg border border-border">
           <div className="flex items-start gap-4">
-            <svg className="w-6 h-6 text-primary flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6 text-primary mt-1"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm11 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM5 10l1.5-4.5h11L19 10H5z" />
             </svg>
             <div>
-              <h4 className="font-light text-foreground mb-2">{t.venue.transportation_title}</h4>
+              <h4 className="font-light text-foreground mb-2">
+                {t.venue.transportation_title}
+              </h4>
               <p className="text-foreground/70 font-light text-sm">
                 {t.venue.transportation_text}
               </p>

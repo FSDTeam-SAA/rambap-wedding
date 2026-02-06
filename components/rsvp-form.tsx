@@ -15,7 +15,7 @@ export default function RSVPForm() {
 
   if (submitted) {
     return (
-      <section className="w-full py-20 px-4 bg-[#f3efe6]">
+      <section className="w-full  px-4 bg-[#f3efe6]">
         <div className="max-w-xl mx-auto bg-white border border-[#e6e0d6] rounded-xl p-12 shadow-sm text-center">
           <h3 className="text-2xl font-serif text-primary mb-4">{t.rsvp.confirmation}</h3>
           <button
@@ -106,7 +106,7 @@ export default function RSVPForm() {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-[#3f4b3a] hover:bg-[#2f382a] text-white py-4 rounded-md flex items-center justify-center gap-2 text-sm tracking-widest transition-colors duration-300"
+            className="w-full bg-primary text-white py-4 rounded-md flex items-center justify-center gap-2 text-sm tracking-widest transition-colors duration-300 cursor-pointer"
           >
             {t.rsvp.submit}
           </button>

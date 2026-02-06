@@ -1,16 +1,18 @@
 import React from "react";
-import { useLanguage } from '@/lib/context/LanguageContext';
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { Heart } from "lucide-react";
 
 const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-[#3f4b32] text-[#f5f5f0] py-16">
+    <footer className="bg-primary text-white py-16">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center text-center gap-4">
-
           {/* Heart Icon */}
-          <span className="text-lg opacity-80 select-none">♡</span>
+          <span className="text-lg opacity-80 select-none">
+            <Heart />
+          </span>
 
           {/* Names */}
           <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-wide">
@@ -26,7 +28,7 @@ const Footer = () => {
           <div className="w-16 h-px bg-white/30 my-6" />
 
           {/* Credit */}
-          <p className="text-[11px] opacity-60">
+          <p className="text-[11px] ">
             Made with love by{" "}
             <a
               href="#"

@@ -7,7 +7,6 @@ import CountdownSection from '@/components/countdown-section';
 import VenueSection from '@/components/venue-section';
 import DayProgramSection from '@/components/day-program-section';
 import MenuSection from '@/components/menu-section';
-import GallerySection from '@/components/gallery-section';
 import AccommodationSection from '@/components/accommodation-section';
 import CarRentalSection from '@/components/car-rental-section';
 import DressCodeSection from '@/components/dress-code-section';
@@ -57,7 +56,6 @@ export default function Home() {
           <VenueSection />
           <DayProgramSection />
           <MenuSection />
-          <GallerySection />
           <AccommodationSection />
           <CarRentalSection />
           <DressCodeSection />
