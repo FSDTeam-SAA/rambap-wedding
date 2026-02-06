@@ -20,7 +20,7 @@ export default function CarRentalSection() {
 
                 <div className="flex justify-center">
                     <a
-                        href="https://www.rentalcars.com/en/city/gh/tema/"
+                        href="https://wopecar.com/book-a-car?utm_source=google&utm_medium=ppc&utm_campaign=01-Search-BR-Competitor&utm_term=utm_term&https://www.wopecar.com/cars?utm_source=google&utm_medium=ppc&utm_campaign=01-Search-BR-Competitor&utm_term=utm_term&gad_source=1&gad_campaignid=19730786145&gbraid=0AAAAADDsfCBaQn3E4Z9uMO9wkhL72a69D&gclid=CjwKCAiA1obMBhAbEiwAsUBbIn1tW4NulTQDFSHT5U9QN8sbcKXUiHFMyFEg38T4naiuiRW488ZCthoCdPoQAvD_BwE"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-card rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center w-full sm:w-[350px] group border border-border/50"
