@@ -106,7 +106,7 @@ export default function VenueSection() {
         <div className="mt-12 md:mt-16 p-6 md:p-8 bg-secondary/30 rounded-lg border border-border">
           <div className="flex items-start gap-4">
             <svg
-              className="w-6 h-6 text-primary flex-shrink-0 mt-1"
+              className="w-6 h-6 text-primary mt-1"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
