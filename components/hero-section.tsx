@@ -95,7 +95,7 @@ export default function HeroSection({ onScroll }: HeroSectionProps) {
         style={{
           backgroundImage: "url(/rambap.png)",
           backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
         }}
