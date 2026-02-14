@@ -1,19 +1,21 @@
-import React from "react"
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import React from "react";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 import { Providers } from "@/components/providers";
+import AppProvider from "@/providers/app-provider";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Axel-Philippe & Eunice - Wedding Celebration',
-  description: 'Join us as we celebrate the love and union of Axel-Philippe and Eunice. An elegant wedding invitation experience.',
-  generator: 'v0.app',
+  title: "Axel-Philippe & Eunice - Wedding Celebration",
+  description:
+    "Join us as we celebrate the love and union of Axel-Philippe and Eunice. An elegant wedding invitation experience.",
+  generator: "v0.app",
   viewport: {
-    width: 'device-width',
+    width: "device-width",
     initialScale: 1,
     maximumScale: 1,
     userScalable: false,
@@ -21,35 +23,35 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
       },
       {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
       },
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: "/icon.svg",
+        type: "image/svg+xml",
       },
     ],
-    apple: '/apple-icon.png',
+    apple: "/apple-icon.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        <Providers>
-          {children}
-        </Providers>
+        <AppProvider>
+          <Providers>{children}</Providers>
+        </AppProvider>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
