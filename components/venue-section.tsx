@@ -2,9 +2,23 @@
 
 import { MapPin, Clock } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
+import { useLanguageStore } from "@/zustand/useLanguageStore";
+import { useQuery } from "@tanstack/react-query";
 
 export default function VenueSection() {
   const { t } = useLanguage();
+  const { lang } = useLanguageStore();
+
+  const { data } = useQuery({
+    queryKey: ["event", lang],
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/event?lang=${lang}`,
+      );
+      const data = await res.json();
+      return data?.data;
+    },
+  });
 
   return (
     <section className="w-full py-16 md:py-24 px-4 bg-[#f3efe6]">
@@ -12,9 +26,9 @@ export default function VenueSection() {
         {/* Title */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light text-foreground mb-2">
-            {t.venue.title}
+            {data?.title}
           </h2>
-          <p className="text-foreground/60 font-light">{t.venue.subtitle}</p>
+          <p className="text-foreground/60 font-light">{data?.subtitle}</p>
         </div>
 
         {/* Venue Card */}
@@ -28,7 +42,7 @@ export default function VenueSection() {
             </div>
 
             <h3 className="text-2xl md:text-3xl font-serif text-center text-foreground mb-8">
-              {t.venue.name}
+              {data?.address}
             </h3>
 
             {/* Event Details */}

@@ -20,7 +20,6 @@ export default function HeroSection({ onScroll }: HeroSectionProps) {
       const data = await res.json();
       return data?.data;
     },
-    enabled: !!lang,
   });
 
   return (
