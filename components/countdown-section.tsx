@@ -1,7 +1,9 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useLanguage } from '@/lib/context/LanguageContext';
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { useLanguageStore } from "@/zustand/useLanguageStore";
+import { useQuery } from "@tanstack/react-query";
 
 interface TimeLeft {
   days: number;
@@ -19,9 +21,23 @@ export default function CountdownSection() {
     seconds: 0,
   });
 
+  const { lang } = useLanguageStore();
+
+  const { data } = useQuery({
+    queryKey: ["hero", lang],
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/hero?lang=${lang}`,
+      );
+      const data = await res.json();
+      return data?.data;
+    },
+    enabled: !!lang,
+  });
+
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const weddingDate = new Date('2026-04-04T10:00:00').getTime();
+      const weddingDate = new Date("2026-04-04T10:00:00").getTime();
       const now = new Date().getTime();
       const difference = weddingDate - now;
 
@@ -44,7 +60,7 @@ export default function CountdownSection() {
     <div className="flex flex-col items-center">
       <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-8 md:px-12 py-6 md:py-8">
         <p className="text-4xl md:text-5xl font-light text-white text-center">
-          {String(value).padStart(2, '0')}
+          {String(value).padStart(2, "0")}
         </p>
       </div>
       <p className="text-xs md:text-sm font-light tracking-[0.2em] text-white/80 mt-3 uppercase">
@@ -74,7 +90,7 @@ export default function CountdownSection() {
         {/* Title */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light text-white mb-3">
-            {t.countdown.title}
+            {data?.countDown || "Countdown to the big day"}
           </h2>
         </div>
 
