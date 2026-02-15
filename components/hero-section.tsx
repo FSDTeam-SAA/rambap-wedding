@@ -9,11 +9,10 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onScroll }: HeroSectionProps) {
-
   const { lang } = useLanguageStore();
 
   const { data } = useQuery({
-    queryKey: ["hero"],
+    queryKey: ["hero", lang],
     queryFn: async () => {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/hero?lang=${lang}`,
@@ -21,6 +20,7 @@ export default function HeroSection({ onScroll }: HeroSectionProps) {
       const data = await res.json();
       return data?.data;
     },
+    enabled: !!lang,
   });
 
   return (
