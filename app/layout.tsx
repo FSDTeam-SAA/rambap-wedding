@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import AppProvider from "@/providers/app-provider";
+import { Toaster } from "sonner";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -51,6 +52,8 @@ export default function RootLayout({
           <Providers>{children}</Providers>
         </AppProvider>
         <Analytics />
+
+        <Toaster position="bottom-right" />
       </body>
     </html>
   );
