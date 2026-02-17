@@ -140,7 +140,10 @@ export default function AccommodationSection() {
           {/* Dress Code Cards */}
           <div className="flex justify-center flex-wrap gap-8">
             {dressCode?.items?.map((item: any, index: number) => (
-              <div key={item._id} className="bg-card rounded-lg shadow-sm p-8 md:p-10 text-center hover:shadow-md transition-shadow max-w-sm w-full">
+              <div
+                key={item._id}
+                className="bg-card rounded-lg shadow-sm p-8 md:p-10 text-center hover:shadow-md transition-shadow max-w-sm w-full"
+              >
                 <div className="flex justify-center mb-6">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
                     <User className="w-8 h-8 text-primary" />
@@ -166,23 +169,6 @@ export default function AccommodationSection() {
           )}
         </div>
       </section>
-
-      {/* Gifts/Registry Section (Optional - based on your data structure) */}
-      {gifts && (
-        <section className="w-full py-16 px-4 bg-[#f3efe6]">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-foreground mb-4">
-              {gifts.title}
-            </h2>
-            <p className="text-foreground/60 font-light mb-2">
-              {gifts.subtitle}
-            </p>
-            <p className="text-foreground/70 font-light max-w-2xl mx-auto">
-              {gifts.description}
-            </p>
-          </div>
-        </section>
-      )}
     </div>
   );
 }
