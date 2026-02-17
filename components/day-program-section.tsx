@@ -2,41 +2,42 @@
 
 import { Printer, MapPin } from 'lucide-react';
 import { useLanguage } from '@/lib/context/LanguageContext';
+import { useLanguageStore } from '@/zustand/useLanguageStore';
+import { useQuery } from '@tanstack/react-query';
 
 export default function DayProgramSection() {
-  const { t } = useLanguage();
+  const { lang } = useLanguageStore();
 
-  const handlePrint = () => {
-    window.print();
-  };
+  const { data: programData } = useQuery({
+    queryKey: ["program", lang],
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/details/program?lang=${lang}`,
+      );
+      const data = await res.json();
+      return data?.data;
+    },
+  });
 
-  // Define map links for each event
-  const eventMapLinks = [
-    'https://www.google.com/maps/place/5%C2%B038\'50.5%22N+0%C2%B001\'25.7%22W/@5.647346,-0.023804,17z/data=!3m1!4b1!4m4!3m3!8m2!3d5.647346!4d-0.023804?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D', // Traditional wedding
-    'https://www.google.com/maps/place/ICGC+ZOE+TEMPLE/@5.6458368,-0.0152148,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf80bf08866a81:0x65ad836254945b55!8m2!3d5.6458315!4d-0.0103439!16s%2Fg%2F11c5s5fzn4?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D', // White wedding
-    'https://www.google.com/maps/place/5%C2%B038\'50.5%22N+0%C2%B001\'25.7%22W/@5.647346,-0.023804,17z/data=!3m1!4b1!4m4!3m3!8m2!3d5.647346!4d-0.023804?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D'  // Reception
-  ];
+  if (!programData) {
+    return null; 
+  }
+
+  const { title, subtitle, items } = programData;
 
   return (
     <section className="w-full pb-16 px-4 bg-[#f3efe6] print:bg-white print:py-8">
       <div className="max-w-5xl mx-auto">
         {/* Title & Print Action */}
-        <div className="flex justify-between items-start mb-16 md:mb-20">
+        <div className="mb-16 md:mb-20">
           <div className="flex-1 text-center">
             <h2 className="text-4xl md:text-5xl font-serif font-light text-foreground mb-2">
-              {t.program.title}
+              {title}
             </h2>
             <p className="text-foreground/60 font-light">
-              {t.program.subtitle}
+              {subtitle}
             </p>
           </div>
-          <button
-            onClick={handlePrint}
-            className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors print:hidden"
-            title="Print Program"
-          >
-            <Printer className="w-6 h-6" />
-          </button>
         </div>
 
         {/* Timeline */}
@@ -46,26 +47,38 @@ export default function DayProgramSection() {
 
           {/* Events */}
           <div className="space-y-12 md:space-y-16">
-            {t.program.events.map((event: any, index: number) => (
+            {items?.map((event: any, index: number) => (
               <div
-                key={index}
+                key={event._id}
                 className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center gap-6 md:gap-8`}
               >
                 {/* Content */}
                 <div className={`w-1/2 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                   <div className={`space-y-2 ${index % 2 === 0 ? 'pr-4 md:pr-8' : 'pl-4 md:pl-8'}`}>
                     <div className="flex items-center gap-2 justify-end mb-1">
-                      {index % 2 !== 0 && <span className="text-2xl">{event.icon}</span>}
+                      {index % 2 !== 0 && (
+                        <img 
+                          src={event.icon} 
+                          alt={event.title}
+                          className="w-6 h-6 object-contain"
+                        />
+                      )}
                       <p className="text-xs md:text-sm font-light tracking-widest text-primary uppercase">
                         {event.title}
                       </p>
-                      {index % 2 === 0 && <span className="text-2xl">{event.icon}</span>}
+                      {index % 2 === 0 && (
+                        <img 
+                          src={event.icon} 
+                          alt={event.title}
+                          className="w-6 h-6 object-contain"
+                        />
+                      )}
                     </div>
                     <p className="text-foreground/60 font-light text-sm md:text-base">
                       {event.description}
                     </p>
                     <a
-                      href={eventMapLinks[index]}
+                      href={event.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-[10px] uppercase tracking-tighter text-primary/60 hover:text-primary transition-colors mt-2"
