@@ -90,7 +90,7 @@ export default function CountdownSection() {
         {/* Title */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light text-white mb-3">
-            {data?.countDown || "Countdown to the big day"}
+            {data?.countdownTitle || "Countdown to the big day"}
           </h2>
         </div>
 

@@ -42,7 +42,7 @@ export default function VenueSection() {
             </div>
 
             <h3 className="text-2xl md:text-3xl font-serif text-center text-foreground mb-8">
-              {data?.address}
+              {data?.venueName}
             </h3>
 
             {/* Event Details */}
@@ -51,30 +51,36 @@ export default function VenueSection() {
                 <div className="flex items-center justify-center gap-2 text-primary mb-2">
                   <Clock className="w-4 h-4" />
                   <span className="text-sm font-light text-foreground/70">
-                    {t.venue.traditional || "Traditional Ceremony"}
+                    {data?.ceremonyTitle || "Traditional Ceremony"}
                   </span>
                 </div>
-                <p className="text-lg font-light text-foreground">10:00 AM</p>
+                <p className="text-lg font-light text-foreground">
+                  {data?.ceremonyTime || "N/A"}
+                </p>
               </div>
 
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 text-primary mb-2">
                   <Clock className="w-4 h-4" />
                   <span className="text-sm font-light text-foreground/70">
-                    {t.venue.wedding || "White Wedding"}
+                    {data?.weddingTitle || "White Wedding"}
                   </span>
                 </div>
-                <p className="text-lg font-light text-foreground">03:00 PM</p>
+                <p className="text-lg font-light text-foreground">
+                  {data?.weddingTime || "N/A"}
+                </p>
               </div>
 
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 text-primary mb-2">
                   <Clock className="w-4 h-4" />
                   <span className="text-sm font-light text-foreground/70">
-                    {t.venue.reception || "Reception"}
+                    {data?.receptionTitle || "Reception"}
                   </span>
                 </div>
-                <p className="text-lg font-light text-foreground">04:30 PM</p>
+                <p className="text-lg font-light text-foreground">
+                  {data?.receptionTime || "N/A"}
+                </p>
               </div>
             </div>
 
@@ -84,7 +90,7 @@ export default function VenueSection() {
                 <MapPin className="w-4 h-4" />
               </div>
               <p className="text-foreground/80 font-light leading-relaxed">
-                Tema, Ghana
+                {data?.address || "N/A"}
               </p>
             </div>
 
@@ -94,7 +100,10 @@ export default function VenueSection() {
                 width="100%"
                 height="100%"
                 frameBorder="0"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.949518366359!2d-0.02478242518396151!3d5.566266633805923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b34577%3A0x60a6c5d80510c2c6!2sTema%2C%20Ghana!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                src={
+                  data?.mapEmbedUrl ||
+                  `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.949518366359!2d-0.02478242518396151!3d5.566266633805923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b34577%3A0x60a6c5d80510c2c6!2sTema%2C%20Ghana!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s`
+                }
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -104,13 +113,16 @@ export default function VenueSection() {
             {/* Open Map Button */}
             <div className="text-center">
               <a
-                href="https://maps.app.goo.gl/8dDLvsm3TBBN5qzK8"
+                href={
+                  data?.mapLocationLink ||
+                  "https://maps.app.goo.gl/8dDLvsm3TBBN5qzK8"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors duration-300 font-light"
               >
                 <MapPin className="w-4 h-4" />
-                {t.venue.open_maps}
+                {data?.mapLocationTitle || "View Map"}
               </a>
             </div>
           </div>
@@ -128,10 +140,10 @@ export default function VenueSection() {
             </svg>
             <div>
               <h4 className="font-light text-foreground mb-2">
-                {t.venue.transportation_title}
+                {data?.transportationTitle || "Transport"}
               </h4>
               <p className="text-foreground/70 font-light text-sm">
-                {t.venue.transportation_text}
+                {data?.transportationInfo || "N/A"}
               </p>
             </div>
           </div>
