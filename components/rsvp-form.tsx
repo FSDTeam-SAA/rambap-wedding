@@ -1,104 +1,105 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { toast } from 'sonner';
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 interface RSVPFormData {
   guestName: string;
   attendance: boolean;
-  guestNumber: number;
+  guestNumber?: number; // Made optional
   mealPreference?: string;
   message?: string;
 }
 
 export default function RSVPForm() {
   const [formData, setFormData] = useState<RSVPFormData>({
-    guestName: '',
+    guestName: "",
     attendance: true,
     guestNumber: 1,
-    mealPreference: '',
-    message: ''
+    mealPreference: "",
+    message: "",
   });
 
   const rsvpMutation = useMutation({
     mutationFn: async (data: RSVPFormData) => {
+      // Remove conditional fields if not attending
+      const submitData = !data.attendance
+        ? {
+            guestName: data.guestName,
+            attendance: false,
+            message: data.message,
+          }
+        : data;
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rsvp`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(submitData),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to submit RSVP');
+        throw new Error(errorData.message || "Failed to submit RSVP");
       }
 
       return response.json();
     },
     onSuccess: () => {
       // Show success toast
-      toast.success('RSVP submitted successfully!');
+      toast.success("RSVP submitted successfully!");
 
       // Reset form data
       setFormData({
-        guestName: '',
+        guestName: "",
         attendance: true,
         guestNumber: 1,
-        mealPreference: '',
-        message: ''
+        mealPreference: "",
+        message: "",
       });
     },
     onError: (error) => {
-      console.error('RSVP submission error:', error);
-      toast.error('Failed to submit RSVP. Please try again.', {
-        position: 'top-center',
-        duration: 5000,
-      });
+      console.error("RSVP submission error:", error);
+      toast.error("Failed to submit RSVP. Please try again.");
     },
   });
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
-    
-    if (type === 'radio') {
+
+    if (type === "radio") {
       const radio = e.target as HTMLInputElement;
-      if (radio.name === 'attendance') {
-        setFormData(prev => ({
+      if (radio.name === "attendance") {
+        setFormData((prev) => ({
           ...prev,
-          attendance: radio.value === 'yes',
-          ...(radio.value === 'no' && { guestNumber: 1, mealPreference: '' })
+          attendance: radio.value === "yes",
+          // Clear conditional fields when switching to "not attending"
+          ...(radio.value === "no" && {
+            guestNumber: undefined,
+            mealPreference: undefined,
+          }),
         }));
       }
-    } else if (type === 'number') {
-      setFormData(prev => ({
+    } else if (type === "number") {
+      setFormData((prev) => ({
         ...prev,
-        [name]: parseInt(value) || 1
+        [name]: parseInt(value) || 1,
       }));
     } else {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        [name]: value
+        [name]: value,
       }));
     }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const submitData = {
-      ...formData,
-      ...(!formData.attendance && { 
-        guestNumber: 0, 
-        mealPreference: undefined 
-      })
-    };
-    
-    rsvpMutation.mutate(submitData);
+    rsvpMutation.mutate(formData);
   };
 
   const isAttending = formData.attendance;
@@ -107,8 +108,12 @@ export default function RSVPForm() {
     <section className="w-full py-20 px-4 bg-[#f3efe6]">
       <div className="max-w-xl mx-auto bg-white border border-[#e6e0d6] rounded-xl p-8 shadow-sm">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-serif text-foreground mb-2">Confirm Your Presence</h2>
-          <p className="text-sm font-light text-foreground/60">Please let us know if you can join us</p>
+          <h2 className="text-3xl font-serif text-foreground mb-2">
+            Confirm Your Presence
+          </h2>
+          <p className="text-sm font-light text-foreground/60">
+            Please let us know if you can join us
+          </p>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -135,28 +140,32 @@ export default function RSVPForm() {
             </label>
             <div className="space-y-3 text-sm font-light">
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input 
-                  type="radio" 
-                  name="attendance" 
+                <input
+                  type="radio"
+                  name="attendance"
                   value="yes"
                   checked={formData.attendance === true}
                   onChange={handleInputChange}
-                  className="accent-primary" 
+                  className="accent-primary"
                   disabled={rsvpMutation.isPending}
                 />
-                <span className="group-hover:text-primary transition-colors">Yes, I'll be there!</span>
+                <span className="group-hover:text-primary transition-colors">
+                  Yes, I'll be there!
+                </span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input 
-                  type="radio" 
-                  name="attendance" 
+                <input
+                  type="radio"
+                  name="attendance"
                   value="no"
                   checked={formData.attendance === false}
                   onChange={handleInputChange}
-                  className="accent-primary" 
+                  className="accent-primary"
                   disabled={rsvpMutation.isPending}
                 />
-                <span className="group-hover:text-primary transition-colors">Sorry, I can't make it</span>
+                <span className="group-hover:text-primary transition-colors">
+                  Sorry, I can't make it
+                </span>
               </label>
             </div>
           </div>
@@ -173,7 +182,7 @@ export default function RSVPForm() {
                   type="number"
                   name="guestNumber"
                   required={isAttending}
-                  value={formData.guestNumber}
+                  value={formData.guestNumber || 1}
                   onChange={handleInputChange}
                   min={1}
                   className="w-32 px-4 py-3 rounded-md bg-[#f1ede4] border border-[#d8d2c8] focus:outline-none focus:ring-1 focus:ring-primary/50 text-sm font-light"
@@ -188,7 +197,7 @@ export default function RSVPForm() {
                 </label>
                 <textarea
                   name="mealPreference"
-                  value={formData.mealPreference}
+                  value={formData.mealPreference || ""}
                   onChange={handleInputChange}
                   placeholder="Meal Preference"
                   className="w-full px-4 py-3 rounded-md bg-[#f1ede4] border border-[#d8d2c8] focus:outline-none focus:ring-1 focus:ring-primary/50 text-sm font-light min-h-[80px]"
@@ -219,7 +228,7 @@ export default function RSVPForm() {
             disabled={rsvpMutation.isPending}
             className="w-full bg-primary text-white py-4 rounded-md flex items-center justify-center gap-2 text-sm tracking-widest transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {rsvpMutation.isPending ? 'Submitting...' : 'Send RSVP'}
+            {rsvpMutation.isPending ? "Submitting..." : "Send RSVP"}
           </button>
         </form>
       </div>
