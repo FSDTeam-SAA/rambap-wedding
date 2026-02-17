@@ -8,8 +8,6 @@ import VenueSection from '@/components/venue-section';
 import DayProgramSection from '@/components/day-program-section';
 import MenuSection from '@/components/menu-section';
 import AccommodationSection from '@/components/accommodation-section';
-import CarRentalSection from '@/components/car-rental-section';
-import DressCodeSection from '@/components/dress-code-section';
 import FAQSection from '@/components/faq-section';
 import RSVPForm from '@/components/rsvp-form';
 import AudioPlayer from '@/components/audio-player';
@@ -57,8 +55,6 @@ export default function Home() {
           <DayProgramSection />
           <MenuSection />
           <AccommodationSection />
-          <CarRentalSection />
-          <DressCodeSection />
           <FAQSection />
           <div ref={rsvpRef}>
             <RSVPForm />
