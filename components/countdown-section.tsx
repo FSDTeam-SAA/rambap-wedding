@@ -89,9 +89,10 @@ export default function CountdownSection() {
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Title */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-light text-white mb-3">
+          <h2 className="text-4xl md:text-5xl font-serif font-light text-white mb-1">
             {data?.countdownTitle || "Countdown to the big day"}
           </h2>
+          <p className="text-white/70">{data?.countdownSubtitle}</p>
         </div>
 
         {/* Countdown Boxes */}
