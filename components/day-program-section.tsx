@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { Printer, MapPin } from 'lucide-react';
-import { useLanguage } from '@/lib/context/LanguageContext';
-import { useLanguageStore } from '@/zustand/useLanguageStore';
-import { useQuery } from '@tanstack/react-query';
+import { Printer, MapPin } from "lucide-react";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { useLanguageStore } from "@/zustand/useLanguageStore";
+import { useQuery } from "@tanstack/react-query";
 
 export default function DayProgramSection() {
   const { lang } = useLanguageStore();
@@ -20,7 +20,7 @@ export default function DayProgramSection() {
   });
 
   if (!programData) {
-    return null; 
+    return null;
   }
 
   const { title, subtitle, items } = programData;
@@ -34,9 +34,7 @@ export default function DayProgramSection() {
             <h2 className="text-4xl md:text-5xl font-serif font-light text-foreground mb-2">
               {title}
             </h2>
-            <p className="text-foreground/60 font-light">
-              {subtitle}
-            </p>
+            <p className="text-foreground/60 font-light">{subtitle}</p>
           </div>
         </div>
 
@@ -50,27 +48,40 @@ export default function DayProgramSection() {
             {items?.map((event: any, index: number) => (
               <div
                 key={event._id}
-                className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center gap-6 md:gap-8`}
+                className={`flex ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"} items-center gap-6 md:gap-8`}
               >
                 {/* Content */}
-                <div className={`w-1/2 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                  <div className={`space-y-2 ${index % 2 === 0 ? 'pr-4 md:pr-8' : 'pl-4 md:pl-8'}`}>
-                    <div className="flex items-center gap-2 justify-end mb-1">
+                <div
+                  className={`w-1/2 ${index % 2 === 0 ? "text-right" : "text-left"}`}
+                >
+                  <div
+                    className={`space-y-2 ${index % 2 === 0 ? "pr-4 md:pr-8" : "pl-4 md:pl-8"}`}
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      {/* Left icon for odd indices (when content is on right side) */}
                       {index % 2 !== 0 && (
-                        <img 
-                          src={event.icon} 
+                        <img
+                          src={event.icon}
                           alt={event.title}
-                          className="w-6 h-6 object-contain"
+                          className="w-6 h-6 object-contain flex-shrink-0"
                         />
                       )}
-                      <p className="text-xs md:text-sm font-light tracking-widest text-primary uppercase">
+
+                      {/* Title - with conditional alignment classes */}
+                      <p
+                        className={`text-xs md:text-sm font-light tracking-widest text-primary uppercase ${
+                          index % 2 === 0 ? "ml-auto" : ""
+                        }`}
+                      >
                         {event.title}
                       </p>
+
+                      {/* Right icon for even indices (when content is on left side) */}
                       {index % 2 === 0 && (
-                        <img 
-                          src={event.icon} 
+                        <img
+                          src={event.icon}
                           alt={event.title}
-                          className="w-6 h-6 object-contain"
+                          className="w-6 h-6 object-contain flex-shrink-0"
                         />
                       )}
                     </div>
