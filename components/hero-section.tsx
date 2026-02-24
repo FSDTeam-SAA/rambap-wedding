@@ -30,7 +30,7 @@ export default function HeroSection({ onScroll }: HeroSectionProps) {
         style={{
           backgroundImage: `url(${data?.videoUrl})`,
           backgroundPosition: "center",
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           // backgroundAttachment: "fixed",
         }}
