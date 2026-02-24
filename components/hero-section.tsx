@@ -32,7 +32,7 @@ export default function HeroSection({ onScroll }: HeroSectionProps) {
           backgroundPosition: "center",
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
+          // backgroundAttachment: "fixed",
         }}
       />
 
