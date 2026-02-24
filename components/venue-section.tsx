@@ -49,8 +49,8 @@ export default function VenueSection() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 pb-8 border-b border-border">
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 text-primary mb-2">
-                  <Clock className="w-4 h-4" />
-                  <span className="text-sm font-light text-foreground/70">
+                  <Clock className="w-5 h-5" />
+                  <span className="text-lg font-light text-foreground/70">
                     {data?.ceremonyTitle || "Traditional Ceremony"}
                   </span>
                 </div>
@@ -61,8 +61,8 @@ export default function VenueSection() {
 
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 text-primary mb-2">
-                  <Clock className="w-4 h-4" />
-                  <span className="text-sm font-light text-foreground/70">
+                  <Clock className="w-5 h-5" />
+                  <span className="text-lg font-light text-foreground/70">
                     {data?.weddingTitle || "White Wedding"}
                   </span>
                 </div>
@@ -73,8 +73,8 @@ export default function VenueSection() {
 
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 text-primary mb-2">
-                  <Clock className="w-4 h-4" />
-                  <span className="text-sm font-light text-foreground/70">
+                  <Clock className="w-5 h-5" />
+                  <span className="text-lg font-light text-foreground/70">
                     {data?.receptionTitle || "Reception"}
                   </span>
                 </div>
@@ -87,9 +87,9 @@ export default function VenueSection() {
             {/* Address */}
             <div className="text-center mb-8">
               <div className="flex items-center justify-center gap-2 text-primary mb-3">
-                <MapPin className="w-4 h-4" />
+                <MapPin className="w-5 h-5" />
               </div>
-              <p className="text-foreground/80 font-light leading-relaxed">
+              <p className="text-foreground/80 font-light leading-relaxed text-lg">
                 {data?.address || "N/A"}
               </p>
             </div>
@@ -130,18 +130,20 @@ export default function VenueSection() {
 
         {/* Transportation */}
         <div className="mt-12 md:mt-16 p-6 md:p-8 bg-secondary/30 rounded-lg border border-border">
-          <div className="flex items-start gap-4">
-            <svg
-              className="w-6 h-6 text-primary mt-1"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm11 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM5 10l1.5-4.5h11L19 10H5z" />
-            </svg>
-            <div>
-              <h4 className="font-light text-foreground mb-2">
-                {data?.transportationTitle || "Transport"}
-              </h4>
+          <div className="flex justify-center gap-4">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1">
+                <svg
+                  className="w-6 h-6 text-primary"
+                  fill="currentColor"
+                  viewBox="0 0 28 28"
+                >
+                  <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm11 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM5 10l1.5-4.5h11L19 10H5z" />
+                </svg>
+                <h4 className="font-light text-foreground text-lg">
+                  {data?.transportationTitle || "Transport"}
+                </h4>
+              </div>
               <p className="text-foreground/70 font-light text-sm">
                 {data?.transportationInfo || "N/A"}
               </p>

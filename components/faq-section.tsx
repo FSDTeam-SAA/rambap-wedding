@@ -150,12 +150,12 @@ export default function FAQSection() {
               </div>
 
               {gifts.subtitle && (
-                <p className="text-gray-600 text-base leading-relaxed mb-2 font-light italic">
+                <p className="text-gray-600 text-base leading-relaxed mb-4 italic">
                   {gifts.subtitle}
                 </p>
               )}
 
-              <p className="text-gray-600 text-base leading-relaxed mb-4">
+              <p className="text-gray-600 text-base leading-relaxed mb-4 text-sm">
                 {gifts.description}
               </p>
             </div>

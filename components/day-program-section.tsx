@@ -59,17 +59,17 @@ export default function DayProgramSection() {
                   >
                     <div className="flex items-center gap-2 mb-1">
                       {/* Left icon for odd indices (when content is on right side) */}
-                      {index % 2 !== 0 && (
+                      {/* {index % 2 !== 0 && (
                         <img
                           src={event.icon}
                           alt={event.title}
                           className="w-6 h-6 object-contain flex-shrink-0"
                         />
-                      )}
+                      )} */}
 
                       {/* Title - with conditional alignment classes */}
                       <p
-                        className={`text-xs md:text-sm font-light tracking-widest text-primary uppercase ${
+                        className={`text-xs md:text-sm font-bold tracking-widest text-primary uppercase ${
                           index % 2 === 0 ? "ml-auto" : ""
                         }`}
                       >
@@ -77,13 +77,13 @@ export default function DayProgramSection() {
                       </p>
 
                       {/* Right icon for even indices (when content is on left side) */}
-                      {index % 2 === 0 && (
+                      {/* {index % 2 === 0 && (
                         <img
                           src={event.icon}
                           alt={event.title}
                           className="w-6 h-6 object-contain flex-shrink-0"
                         />
-                      )}
+                      )} */}
                     </div>
                     <p className="text-foreground/60 font-light text-sm md:text-base">
                       {event.description}
@@ -92,7 +92,7 @@ export default function DayProgramSection() {
                       href={event.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[10px] uppercase tracking-tighter text-primary/60 hover:text-primary transition-colors mt-2"
+                      className="inline-flex items-center gap-1 text-[10px] uppercase tracking-tighter text-primary/60 hover:text-primary transition-colors mt-2 font-bold"
                     >
                       <MapPin className="w-3 h-3" />
                       View Map

@@ -74,13 +74,10 @@ export default function AccommodationSection() {
                 <h3 className="text-xl font-serif font-light text-foreground mb-2">
                   {item.title}
                 </h3>
-                <p className="text-foreground/60 text-sm font-light mb-4">
+                {/* <p className="text-foreground/60 text-sm font-light mb-4">
                   {item.description}
-                </p>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-tighter text-primary/60 group-hover:text-primary transition-colors">
-                  View Options
-                  <ExternalLink className="w-4 h-4" />
-                </span>
+                </p> */}
+                
               </a>
             ))}
           </div>
@@ -117,10 +114,10 @@ export default function AccommodationSection() {
                 <p className="text-foreground/60 text-sm font-light mb-4">
                   {item.description}
                 </p>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-tighter text-primary/60 group-hover:text-primary transition-colors">
+                {/* <span className="inline-flex items-center gap-2 text-xs uppercase tracking-tighter text-primary/60 group-hover:text-primary transition-colors">
                   View Rental Options
                   <ExternalLink className="w-4 h-4" />
-                </span>
+                </span> */}
               </a>
             ))}
           </div>
