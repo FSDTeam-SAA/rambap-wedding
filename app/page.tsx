@@ -1,37 +1,93 @@
-'use client';
+// 'use client';
 
-import { useRef, useState } from 'react';
-import VideoIntro from '@/components/video-intro';
-import HeroSection from '@/components/hero-section';
-import CountdownSection from '@/components/countdown-section';
-import VenueSection from '@/components/venue-section';
-import DayProgramSection from '@/components/day-program-section';
-import MenuSection from '@/components/menu-section';
-import AccommodationSection from '@/components/accommodation-section';
-import FAQSection from '@/components/faq-section';
-import RSVPForm from '@/components/rsvp-form';
-import AudioPlayer from '@/components/audio-player';
-import Footer from '@/components/footer';
+// import { useRef, useState } from 'react';
+// import VideoIntro from '@/components/video-intro';
+// import HeroSection from '@/components/hero-section';
+// import CountdownSection from '@/components/countdown-section';
+// import VenueSection from '@/components/venue-section';
+// import DayProgramSection from '@/components/day-program-section';
+// import MenuSection from '@/components/menu-section';
+// import AccommodationSection from '@/components/accommodation-section';
+// import FAQSection from '@/components/faq-section';
+// import RSVPForm from '@/components/rsvp-form';
+// import AudioPlayer from '@/components/audio-player';
+// import Footer from '@/components/footer';
 
-import LanguageSwitcher from '@/components/language-switcher';
+// import LanguageSwitcher from '@/components/language-switcher';
+
+// export default function Home() {
+//   const [showLanding, setShowLanding] = useState(false);
+//   const audioRef = useRef<any>(null);
+//   const rsvpRef = useRef<HTMLDivElement>(null);
+
+//   const handleScroll = () => {
+//     rsvpRef.current?.scrollIntoView({ behavior: 'smooth' });
+//   };
+
+//   // 🔥 Called when envelope is clicked
+//   const handleIntroStart = () => {
+//     audioRef.current?.play();
+//   };
+
+//   // 🔥 Called when video ends
+//   const handleIntroComplete = () => {
+//     setShowLanding(true);
+//   };
+
+//   return (
+//     <main className="bg-background">
+//       {/* Audio always mounted */}
+//       <AudioPlayer ref={audioRef} />
+
+//       {/* Language Switcher */}
+//       <LanguageSwitcher />
+
+//       {!showLanding ? (
+//         <VideoIntro
+//           onStart={handleIntroStart}
+//           onComplete={handleIntroComplete}
+//         />
+//       ) : (
+//         <div className="animate-fade-in">
+//           <HeroSection onScroll={handleScroll} />
+//           <CountdownSection />
+//           <VenueSection />
+//           <DayProgramSection />
+//           <MenuSection />
+//           <AccommodationSection />
+//           <FAQSection />
+//           <div ref={rsvpRef}>
+//             <RSVPForm />
+//           </div>
+//           <Footer />
+//         </div>
+//       )}
+//     </main>
+//   );
+// }
+
+"use client";
+
+import { useRef } from "react";
+import HeroSection from "@/components/hero-section";
+import CountdownSection from "@/components/countdown-section";
+import VenueSection from "@/components/venue-section";
+import DayProgramSection from "@/components/day-program-section";
+import MenuSection from "@/components/menu-section";
+import AccommodationSection from "@/components/accommodation-section";
+import FAQSection from "@/components/faq-section";
+import RSVPForm from "@/components/rsvp-form";
+import AudioPlayer from "@/components/audio-player";
+import Footer from "@/components/footer";
+
+import LanguageSwitcher from "@/components/language-switcher";
 
 export default function Home() {
-  const [showLanding, setShowLanding] = useState(false);
   const audioRef = useRef<any>(null);
   const rsvpRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
-    rsvpRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // 🔥 Called when envelope is clicked
-  const handleIntroStart = () => {
-    audioRef.current?.play();
-  };
-
-  // 🔥 Called when video ends
-  const handleIntroComplete = () => {
-    setShowLanding(true);
+    rsvpRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -42,26 +98,19 @@ export default function Home() {
       {/* Language Switcher */}
       <LanguageSwitcher />
 
-      {!showLanding ? (
-        <VideoIntro
-          onStart={handleIntroStart}
-          onComplete={handleIntroComplete}
-        />
-      ) : (
-        <div className="animate-fade-in">
-          <HeroSection onScroll={handleScroll} />
-          <CountdownSection />
-          <VenueSection />
-          <DayProgramSection />
-          <MenuSection />
-          <AccommodationSection />
-          <FAQSection />
-          <div ref={rsvpRef}>
-            <RSVPForm />
-          </div>
-          <Footer />
+      <div className="animate-fade-in">
+        <HeroSection onScroll={handleScroll} />
+        <CountdownSection />
+        <VenueSection />
+        <DayProgramSection />
+        <MenuSection />
+        <AccommodationSection />
+        <FAQSection />
+        <div ref={rsvpRef}>
+          <RSVPForm />
         </div>
-      )}
+        <Footer />
+      </div>
     </main>
   );
 }
