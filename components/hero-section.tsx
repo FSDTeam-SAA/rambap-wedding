@@ -28,7 +28,7 @@ export default function HeroSection({ onScroll }: HeroSectionProps) {
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
-          backgroundImage: "url(/rambap.png)",
+          backgroundImage: `url(${data?.videoUrl})`,
           backgroundPosition: "center",
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
